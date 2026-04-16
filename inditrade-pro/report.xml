@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="6" failures="0" errors="0" time="0.0072097">
+    <testsuite name="test_api.test.ts" timestamp="2026-04-16T06:25:42.819Z" hostname="LAPTOP-V03HQQCU" tests="1" failures="0" errors="0" skipped="0" time="0.0029871">
+        <testcase classname="test_api.test.ts" name="Functional Test - App Logic &gt; should simulate API response" time="0.0014296">
+        </testcase>
+    </testsuite>
+    <testsuite name="test_app.test.ts" timestamp="2026-04-16T06:25:42.821Z" hostname="LAPTOP-V03HQQCU" tests="5" failures="0" errors="0" skipped="0" time="0.0042226">
+        <testcase classname="test_app.test.ts" name="Stock Market Management Tests &gt; TC1: Buy stock reduces balance" time="0.0013959">
+        </testcase>
+        <testcase classname="test_app.test.ts" name="Stock Market Management Tests &gt; TC2: Sell stock increases balance" time="0.0001787">
+        </testcase>
+        <testcase classname="test_app.test.ts" name="Stock Market Management Tests &gt; TC3: Negative quantity should fail" time="0.000634">
+        </testcase>
+        <testcase classname="test_app.test.ts" name="Stock Market Management Tests &gt; TC4: Insufficient balance should fail" time="0.0002324">
+        </testcase>
+        <testcase classname="test_app.test.ts" name="Stock Market Management Tests &gt; TC5: Portfolio update works" time="0.0001966">
+        </testcase>
+    </testsuite>
+</testsuites>
