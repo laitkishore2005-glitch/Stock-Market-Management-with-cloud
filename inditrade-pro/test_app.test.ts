@@ -6,10 +6,10 @@ function add(a: number, b: number) {
 
 describe('Unit Test - Add Function', () => {
   it('should return correct sum', () => {
-    expect(add(2, 3)).toBe(5)
+    expect(add(2, 2)).toBe(4) // correct
   })
 
   it('intentional fail case (bug tracking)', () => {
-    expect(add(2, 2)).toBe(5) //  fail
+    expect(add(2, 2)).toBe(4) // correct
   })
 })
