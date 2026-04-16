@@ -1,29 +1,43 @@
 import { describe, it, expect } from 'vitest'
 
-function add(a: number, b: number) {
-  return a + b
+// Mock functions (simulate your system logic)
+function buyStock(balance: number, qty: number, price: number) {
+  if (qty <= 0) throw new Error("Invalid quantity")
+  const total = qty * price
+  if (balance < total) throw new Error("Insufficient balance")
+  return balance - total
 }
 
-describe('Unit Test - Add Function', () => {
+function sellStock(balance: number, qty: number, price: number) {
+  return balance + (qty * price)
+}
 
-  it('Test 1: should return correct sum', () => {
-    expect(add(2, 2)).toBe(4)
+function updatePortfolio(portfolio: any[], stock: string, qty: number) {
+  portfolio.push({ stock, qty })
+  return portfolio
+}
+
+describe('Stock Market Management Tests', () => {
+
+  it('TC1: Buy stock reduces balance', () => {
+    expect(buyStock(10000, 5, 1000)).toBe(5000)
   })
 
-  it('Test 2: should handle negative numbers', () => {
-    expect(add(-2, -3)).toBe(-5)
+  it('TC2: Sell stock increases balance', () => {
+    expect(sellStock(5000, 5, 1000)).toBe(10000)
   })
 
-  it('Test 3: should handle zero', () => {
-    expect(add(0, 5)).toBe(5)
+  it('TC3: Negative quantity should fail', () => {
+    expect(() => buyStock(10000, -5, 1000)).toThrow()
   })
 
-  it('Test 4: should handle large numbers', () => {
-    expect(add(1000, 2000)).toBe(3000)
+  it('TC4: Insufficient balance should fail', () => {
+    expect(() => buyStock(1000, 5, 1000)).toThrow()
   })
 
-  it('Test 5: intentional fail case (bug tracking)', () => {
-    expect(add(2, 2)).toBe(5) //  intentional fail
+  it('TC5: Portfolio update works', () => {
+    const result = updatePortfolio([], 'AAPL', 5)
+    expect(result.length).toBe(1)
   })
 
 })
