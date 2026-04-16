@@ -1,11 +1,13 @@
-# Build React app
 FROM node:18 as build
+
 WORKDIR /app
-COPY . .
+
+# go inside subfolder
+COPY inditrade-pro/ .
+
 RUN npm install
 RUN npm run build
 
-# Serve using nginx
 FROM nginx:latest
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 80
