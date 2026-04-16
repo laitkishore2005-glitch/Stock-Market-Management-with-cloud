@@ -10,6 +10,6 @@ describe('Unit Test - Add Function', () => {
   })
 
   it('intentional fail case (bug tracking)', () => {
-    expect(add(2, 2)).toBe(4) // correct
+    expect(add(2, 2)).toBe(4) // solved bug
   })
 })
