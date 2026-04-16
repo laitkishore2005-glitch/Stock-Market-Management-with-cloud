@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profile",
+      "description": "Stores user profile information and roles",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Unique user ID from Firebase Auth" },
+        "displayName": { "type": "string", "description": "User's full name" },
+        "email": { "type": "string", "format": "email", "description": "User's email address" },
+        "photoURL": { "type": "string", "format": "uri", "description": "User's profile picture URL" },
+        "lastLogin": { "type": "string", "format": "date-time", "description": "Last login timestamp" },
+        "role": { "type": "string", "enum": ["user", "admin", "pro"], "description": "User's access level" }
+      },
+      "required": ["uid", "email"]
+    },
+    "logs": {
+      "title": "System Log",
+      "description": "Stores system and security logs",
+      "type": "object",
+      "properties": {
+        "timestamp": { "type": "string", "format": "date-time", "description": "When the event occurred" },
+        "level": { "type": "string", "enum": ["Info", "Warning", "Critical", "Success"] },
+        "module": { "type": "string", "description": "System module name" },
+        "message": { "type": "string", "description": "Log message content" },
+        "user": { "type": "string", "description": "User email or SYSTEM" }
+      },
+      "required": ["timestamp", "level", "module", "message"]
+    },
+    "chatMessages": {
+      "title": "Chat Message",
+      "description": "Stores messages from the Gemini chatbot",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "role": { "type": "string", "enum": ["user", "model"] },
+        "content": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "role", "content", "timestamp"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profile documents"
+    },
+    "/logs/{logId}": {
+      "schema": "logs",
+      "description": "System audit logs"
+    },
+    "/users/{userId}/chatHistory/{messageId}": {
+      "schema": "chatMessages",
+      "description": "User's private chat history with Gemini"
+    }
+  }
+}

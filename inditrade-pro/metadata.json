@@ -1,0 +1,5 @@
+{
+  "name": "IndiTrade Pro",
+  "description": "A premium, high-performance Indian stock market trading terminal featuring real-time simulated data, AI-powered market analysis via Gemini, and professional charting tools.",
+  "requestFramePermissions": []
+}
